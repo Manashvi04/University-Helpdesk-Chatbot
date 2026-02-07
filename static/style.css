@@ -1,0 +1,145 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* NAVBAR */
+.navbar {
+    background: #4a63e7;
+    color: white;
+    padding: 15px 30px;
+}
+
+/* HOME SECTION */
+.home {
+    padding: 60px;
+    text-align: center;
+}
+
+.home h1 {
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+.home p {
+    max-width: 700px;
+    margin: auto;
+    font-size: 18px;
+    color: #444;
+}
+
+/* FEATURES */
+.features {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: #f4f6ff;
+    padding: 20px;
+    border-radius: 12px;
+    font-size: 18px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* CHAT ICON */
+.chat-icon {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: #4a63e7;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+/* CHATBOX */
+.chatbox {
+    position: fixed;
+    bottom: 100px;
+    right: 25px;
+    width: 350px;
+    height: 450px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    display: none;
+    flex-direction: column;
+}
+
+.chatbox.show {
+    display: flex;
+}
+
+/* CHAT HEADER */
+.chat-header {
+    background: #4a63e7;
+    color: white;
+    padding: 12px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+/* CHAT AREA */
+#chat {
+    flex: 1;
+    padding: 15px;
+    background: #f7f7f7;
+    overflow-y: auto;
+}
+
+/* MESSAGES */
+.message {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 80%;
+    font-size: 14px;
+}
+
+.user {
+    background: #4a63e7;
+    color: white;
+    margin-left: auto;
+}
+
+.bot {
+    background: #e4e6eb;
+}
+
+/* INPUT */
+.input-area {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+}
+
+.input-area input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.input-area button {
+    margin-left: 8px;
+    background: #4a63e7;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 15px;
+    cursor: pointer;
+}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>University Helpdesk</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar">
+    <h2>My University</h2>
+</nav>
+
+<!-- ================= HOME PAGE ================= -->
+<section class="home">
+    <h1>Welcome to University Helpdesk</h1>
+    <p>
+        This AI-powered chatbot helps students with academic and administrative
+        queries such as fees, exams, scholarships, timetable, admissions, hostel,
+        placements, and more.
+    </p>
+
+    <div class="features">
+        <div class="card">📚 Academic Support</div>
+        <div class="card">💰 Fees & Scholarships</div>
+        <div class="card">📝 Exams & Results</div>
+        <div class="card">🏠 Hostel & Library</div>
+        <div class="card">🎓 Placements</div>
+        <div class="card">🕒 24/7 Availability</div>
+    </div>
+</section>
+
+<!-- ================= CHATBOT ICON ================= -->
+<div class="chat-icon" onclick="toggleChat()">
+    🤖
+</div>
+
+<!-- ================= CHATBOX ================= -->
+<div class="chatbox" id="chatbox">
+    <div class="chat-header">
+        University Chatbot
+        <span onclick="toggleChat()">✖</span>
+    </div>
+
+    <div id="chat"></div>
+
+    <div class="input-area">
+        <input type="text" id="message" placeholder="Type your question...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+</div>
+
+<!-- ================= SCRIPT ================= -->
+<script>
+function toggleChat() {
+    document.getElementById("chatbox").classList.toggle("show");
+}
+
+function sendMessage() {
+    let input = document.getElementById("message");
+    let msg = input.value.trim();
+    if (!msg) return;
+
+    let chat = document.getElementById("chat");
+
+    let userDiv = document.createElement("div");
+    userDiv.className = "message user";
+    userDiv.innerText = msg;
+    chat.appendChild(userDiv);
+
+    input.value = "";
+
+    fetch("/chat", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({message: msg})
+    })
+    .then(res => res.json())
+    .then(data => {
+        let botDiv = document.createElement("div");
+        botDiv.className = "message bot";
+        botDiv.innerText = data.reply;
+        chat.appendChild(botDiv);
+        chat.scrollTop = chat.scrollHeight;
+    });
+}
+
+document.getElementById("message").addEventListener("keydown", function(e) {
+    if (e.key === "Enter") sendMessage();
+});
+</script>
+
+</body>
+</html>
